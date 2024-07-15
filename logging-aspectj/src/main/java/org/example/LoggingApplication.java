@@ -1,6 +1,8 @@
 package org.example;
 
 import org.aspectj.lang.Aspects;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class LoggingApplication {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingApplication.class);
 
     private Service service;
 
@@ -32,6 +36,6 @@ public class LoggingApplication {
 
     private void start() {
         service.doSomething();
-        System.out.println(service.doSomethingElse());
+        LOGGER.info(service.doSomethingElse());
     }
 }
